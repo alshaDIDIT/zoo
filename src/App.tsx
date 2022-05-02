@@ -1,11 +1,21 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Test } from './components/Test';
+import { Animal } from './pages/Animal';
+import { Animals } from './pages/Animals';
+import { Layout } from './pages/Layout';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <Test />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Animals />}></Route>
+          <Route path='animal/:id' element={<Animal />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
+        </Route>
+      </Routes>  
+    </BrowserRouter>
   );
 }
 
